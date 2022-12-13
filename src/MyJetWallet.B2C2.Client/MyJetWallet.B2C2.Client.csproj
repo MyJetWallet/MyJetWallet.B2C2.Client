@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <Description>MyJetWallet.B2C2.Client is a .Net wrapper for the Fireblocks API. It includes all features that the API provides.</Description>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/MyJetWallet/MyJetWallet.B2C2.Client</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/MyJetWallet/MyJetWallet.B2C2.Client</RepositoryUrl>
+        <PackageTags>Fireblocks MyJetWallet.B2C2.Client.Net C# .Net CryptoCurrency Wallet Exchange Rest API Wrapper</PackageTags>
+        <NeutralLanguage>en</NeutralLanguage>
+        <Version>1.0.0</Version>
+        <RootNamespace>MyJetWallet.B2C2.Client</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Autofac" Version="6.5.0" />
+        <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.9" />
+        <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Options" Version="7.0.0" />
+        <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.25.1" />
+        <PackageReference Include="MyJetWallet.Sdk.Service" Version="2.2.4" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.25.1" />
+    </ItemGroup>
+
+</Project>
