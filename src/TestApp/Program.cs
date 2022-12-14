@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -29,6 +31,10 @@ namespace TestApp
                 serviceProvider.GetService<IHttpClientFactory>(), 
                 loggerFactory.CreateLogger<B2С2RestClient>());
 
+            var websocketClient = new B2С2WebSocketClient(
+                new B2C2ClientSettings("wss://socket.uat.b2c2.net/quotes", token),
+                loggerFactory.CreateLogger<B2С2WebSocketClient>(),
+                TimeSpan.FromMilliseconds(10_000));
 
             var instruments = await client.InstrumentsAsync();
 
@@ -37,26 +43,57 @@ namespace TestApp
             var balances = await client.BalanceAsync();
 
             Print(balances);
-            
-            var qote = await client.RequestForQuoteAsync(new RequestForQuoteRequest()
+
+            var instrument = instruments.First(x => x.Name == "BTCUSD.SPOT");
+
+            foreach (var item in instruments)
             {
-                Instrument = "BTCUSD",
+                try
+                {
+                    await websocketClient.SubscribeAsync(item.Name, new[] { 0.01m, 0.5m }, async (price) =>
+                    {
+                        Print(price);
+                    });
+                }
+                catch (Exception)
+                {
+                    // ignored
+                }
+            }
+
+            while (true)
+            {
+                Thread.Sleep(50);
+            }
+
+            await websocketClient.UnsubscribeAsync(instrument.Name);
+
+            var quote = await client.RequestForQuoteAsync(new RequestForQuoteRequest()
+            {
+                Instrument = instrument.Name,
                 Side = Side.Buy,
-                Quantity = 1m,
+                Quantity = 0.01m,
                 ClientRfqId = Guid.NewGuid().ToString()
             });
 
+            Print(quote);
+            
             var order = await client.OrderAsync(new OrderRequest()
             {
                 ClientOrderId = Guid.NewGuid().ToString(),
-                Instrument = "BTCUSD",
+                Instrument = instrument.Name,
                 Side = Side.Buy,
-                Quantity = 0.001m,
-                Price = 10000m,
-                AcceptableSlippage = 1,
+                Quantity = quote.Quantity,
+                Price = quote.Price,
+                //AcceptableSlippage = 1,
                 OrderType = OrderType.FOK,
+                ValidUntil = quote.ValidUntil,
+                //ExecutingUnit = 
+                //ForceOpen = 
                 
             });
+
+            Print(order);
 
             // await TestPublicKey();
             Console.ReadLine();

@@ -128,7 +128,7 @@ namespace MyJetWallet.B2C2.Client
         {
             _log.LogDebug("Attempt to connect and start handle messages cycle...");
 
-            _clientWebSocket.Options.SetRequestHeader("Authorization", $"Token {_authorizationToken}");
+            _clientWebSocket.Options.SetRequestHeader("Authorization", $"{_authorizationToken}");
 
             var connected = TryConnect(ct).GetAwaiter().GetResult();
 

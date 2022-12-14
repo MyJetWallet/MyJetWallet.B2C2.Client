@@ -35,7 +35,7 @@ namespace MyJetWallet.B2C2.Client.Models.Rest
         public bool? ForceOpen { get; set; }
 
         /// Datetime field formatted “%Y-%m-%dT%H:%M:%S”.
-        [JsonProperty("valid_until")]
+        [JsonProperty("valid_until"), JsonConverter(typeof(IsoDateTimeConverter))]
         public DateTime ValidUntil { get; set; }
 
         /// Acceptable leeway in bps, between 0 and 20. Only FOK. (maximum 2 decimals)
