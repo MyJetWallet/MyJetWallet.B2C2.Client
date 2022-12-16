@@ -6,7 +6,7 @@ using MyJetWallet.B2C2.Client.Models.Rest;
 
 namespace MyJetWallet.B2C2.Client
 {
-    public interface IB2С2RestClient : IDisposable
+    public interface IB2C2RestClient : IDisposable
     {
         Task<IReadOnlyDictionary<string, decimal>> BalanceAsync(CancellationToken ct = default(CancellationToken));
 

@@ -15,15 +15,15 @@ using Newtonsoft.Json;
 
 namespace MyJetWallet.B2C2.Client
 {
-    public class B2С2RestClient : IB2С2RestClient
+    public class B2C2RestClient : IB2C2RestClient
     {
         private readonly HttpClient _httpClient;
-        private readonly ILogger<B2С2RestClient> _log;
+        private readonly ILogger<B2C2RestClient> _log;
 
-        public B2С2RestClient(
+        public B2C2RestClient(
             B2C2ClientSettings settings,
             IHttpClientFactory clientFactory,
-            ILogger<B2С2RestClient> logger)
+            ILogger<B2C2RestClient> logger)
         {
             if (settings == null) throw new NullReferenceException(nameof(settings));
             var url = settings.Url;

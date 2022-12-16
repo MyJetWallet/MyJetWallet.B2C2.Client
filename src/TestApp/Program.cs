@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using MyJetWallet.B2C2.Client;
-using MyJetWallet.B2C2.Client.Exceptions;
 using MyJetWallet.B2C2.Client.Models.Rest;
 using MyJetWallet.B2C2.Client.Settings;
 using MyJetWallet.Sdk.Service;
@@ -24,16 +23,16 @@ namespace TestApp
             var serviceProvider = serviceCollection.BuildServiceProvider();
             using var loggerFactory = LogConfigurator.ConfigureElk_v2("MyJetWallet", null, null);
             var token = Environment.GetEnvironmentVariable("B2C2_TOKEN");
-            var client = new B2С2RestClient(
+            var client = new B2C2RestClient(
                 new B2C2ClientSettings(
                     "https://api.uat.b2c2.net",
                     token),
                 serviceProvider.GetService<IHttpClientFactory>(), 
-                loggerFactory.CreateLogger<B2С2RestClient>());
+                loggerFactory.CreateLogger<B2C2RestClient>());
 
-            var websocketClient = new B2С2WebSocketClient(
+            var websocketClient = new B2C2WebSocketClient(
                 new B2C2ClientSettings("wss://socket.uat.b2c2.net/quotes", token),
-                loggerFactory.CreateLogger<B2С2WebSocketClient>(),
+                loggerFactory.CreateLogger<B2C2WebSocketClient>(),
                 TimeSpan.FromMilliseconds(10_000));
 
             var instruments = await client.InstrumentsAsync();

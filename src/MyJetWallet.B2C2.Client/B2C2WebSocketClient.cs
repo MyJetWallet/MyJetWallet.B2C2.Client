@@ -16,12 +16,12 @@ using Newtonsoft.Json.Linq;
 
 namespace MyJetWallet.B2C2.Client
 {
-    public class B2С2WebSocketClient : IB2С2WebSocketClient
+    public class B2C2WebSocketClient : IB2C2WebSocketClient
     {
         private readonly TimeSpan _timeOut = new TimeSpan(0, 0, 0, 5);
         private readonly string _baseUri;
         private readonly string _authorizationToken;
-        private readonly ILogger<B2С2WebSocketClient> _log;
+        private readonly ILogger<B2C2WebSocketClient> _log;
         private ClientWebSocket _clientWebSocket;
         private readonly object _sync = new object();
         private readonly ConcurrentDictionary<string, Subscription> _awaitingSubscriptions;
@@ -31,7 +31,7 @@ namespace MyJetWallet.B2C2.Client
 
         private readonly CancellationTokenSource _cancellationTokenSource;
 
-        public B2С2WebSocketClient(B2C2ClientSettings settings, ILogger<B2С2WebSocketClient> logger, TimeSpan? timeOut = null)
+        public B2C2WebSocketClient(B2C2ClientSettings settings, ILogger<B2C2WebSocketClient> logger, TimeSpan? timeOut = null)
         {
             if (settings == null) throw new NullReferenceException(nameof(settings));
             var url = settings.Url;
@@ -434,7 +434,7 @@ namespace MyJetWallet.B2C2.Client
             GC.SuppressFinalize(this);
         }
 
-        ~B2С2WebSocketClient()
+        ~B2C2WebSocketClient()
         {
             Dispose(false);
         }
