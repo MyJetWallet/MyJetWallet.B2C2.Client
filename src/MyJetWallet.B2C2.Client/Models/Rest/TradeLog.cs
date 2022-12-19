@@ -28,5 +28,8 @@ namespace MyJetWallet.B2C2.Client.Models.Rest
 
         [JsonProperty("created")]
         public DateTime Created { get; set; }
+
+        [JsonProperty("order")]
+        public string Order { get; set; }
     }
 }
