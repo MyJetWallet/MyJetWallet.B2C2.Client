@@ -17,6 +17,8 @@ namespace MyJetWallet.B2C2.Client
 
         Task<OrderResponse> OrderAsync(OrderRequest orderRequest, CancellationToken ct = default(CancellationToken));
 
+        Task<OrderResponse> GetOrderAsync(string orderId, CancellationToken ct = default(CancellationToken));
+
         Task<Trade> TradeAsync(TradeRequest tradeRequest, CancellationToken ct = default(CancellationToken));
 
         /// <summary>

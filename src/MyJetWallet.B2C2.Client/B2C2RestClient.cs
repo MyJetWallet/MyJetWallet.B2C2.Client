@@ -175,6 +175,37 @@ namespace MyJetWallet.B2C2.Client
             }
         }
 
+        public async Task<OrderResponse> GetOrderAsync(string orderId, CancellationToken ct = default(CancellationToken))
+        {
+            var requestId = Guid.NewGuid();
+
+            _log.LogDebug("order - request", orderId);
+
+            var responseStr = string.Empty;
+
+            try
+            {
+                using var response = await _httpClient.GetAsync("order/{orderId}/", ct).ConfigureAwait(false);
+                var status = response.StatusCode;
+
+                responseStr = await response.Content.ReadAsStringAsync(ct).ConfigureAwait(false);
+
+                _log.LogDebug("order - response {requestId}; {responseStr}", orderId, responseStr);
+
+                CheckForErrorInResponse(responseStr, status, requestId);
+
+                var result = JsonConvert.DeserializeObject<OrderResponse>(responseStr);
+
+                return result;
+            }
+            catch (Exception e)
+            {
+                _log.LogError(e, "order - response exception", new { RequestId = requestId, Response = responseStr });
+
+                throw;
+            }
+        }
+
         public async Task<Trade> TradeAsync(TradeRequest tradeRequest, CancellationToken ct = default(CancellationToken))
         {
             if (tradeRequest == null) throw new ArgumentNullException(nameof(tradeRequest));
