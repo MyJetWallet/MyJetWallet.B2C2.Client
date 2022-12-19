@@ -4,6 +4,7 @@ using MyJetWallet.B2C2.Client.Models.Rest;
 
 namespace MyJetWallet.B2C2.Client.Exceptions
 {
+    // ReSharper disable once InconsistentNaming
     public class B2c2RestException : Exception
     {
         public ErrorResponse ErrorResponse { get; }

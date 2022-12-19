@@ -27,6 +27,8 @@ namespace MyJetWallet.B2C2.Client
         /// <returns></returns>
         Task<List<TradeLog>> GetTradeHistoryAsync(int offset = 0, int limit = 50, CancellationToken ct = default(CancellationToken));
 
+        Task<TradeLog> GetTradeAsync(string tradeId, CancellationToken ct = default(CancellationToken));
+
         /// <summary>
         /// Get a list of all entries affecting your balance, such as trade legs and settlements.
         /// </summary>

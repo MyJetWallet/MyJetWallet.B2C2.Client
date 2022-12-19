@@ -241,6 +241,40 @@ namespace MyJetWallet.B2C2.Client
             }
         }
 
+        public async Task<TradeLog> GetTradeAsync(string tradeId, CancellationToken ct = default(CancellationToken))
+        {
+            var requestId = Guid.NewGuid();
+
+            _log.LogDebug("trade history - request", requestId);
+
+            var responseStr = string.Empty;
+
+            try
+            {
+                using var response = await _httpClient.GetAsync($"trade/{tradeId}/", ct).ConfigureAwait(false);
+                var status = response.StatusCode;
+
+                responseStr = await response.Content.ReadAsStringAsync(ct).ConfigureAwait(false);
+
+                _log.LogDebug("trade history - response {requestId}; {responseStr}", requestId, responseStr);
+                CheckForErrorInResponse(responseStr, status, requestId);
+
+                var result = JsonConvert.DeserializeObject<TradeLog>(responseStr);
+
+                return result;
+            }
+            catch (Exception e)
+            {
+                _log.LogError(e, "trade history - response exception", new
+                {
+                    RequestId = requestId,
+                    Response = responseStr
+                });
+
+                throw;
+            }
+        }
+
         public async Task<List<LedgerLog>> GetLedgerHistoryAsync(int offset = 0, int limit = 50, CancellationToken ct = default(CancellationToken))
         {
             var requestId = Guid.NewGuid();
