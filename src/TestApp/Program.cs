@@ -19,7 +19,7 @@ namespace TestApp
             //var body = "";
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddHttpClient();
-            
+
             var serviceProvider = serviceCollection.BuildServiceProvider();
             using var loggerFactory = LogConfigurator.ConfigureElk_v2("MyJetWallet", null, null);
             var token = Environment.GetEnvironmentVariable("B2C2_TOKEN");
@@ -27,13 +27,13 @@ namespace TestApp
                 new B2C2ClientSettings(
                     "https://api.uat.b2c2.net",
                     token),
-                serviceProvider.GetService<IHttpClientFactory>(), 
+                serviceProvider.GetService<IHttpClientFactory>(),
                 loggerFactory.CreateLogger<B2C2RestClient>());
 
             var websocketClient = new B2C2WebSocketClient(
                 new B2C2ClientSettings("wss://socket.uat.b2c2.net/quotes", token),
                 loggerFactory.CreateLogger<B2C2WebSocketClient>(),
-                TimeSpan.FromMilliseconds(10_000));
+                TimeSpan.FromMilliseconds(600_000));
 
             var instruments = await client.InstrumentsAsync();
 
@@ -45,27 +45,23 @@ namespace TestApp
 
             var instrument = instruments.First(x => x.Name == "BTCUSD.SPOT");
 
-            foreach (var item in instruments)
+            websocketClient.Start();
+            await websocketClient.SubscribeAsync(instrument.Name, new[] { 0.01m, 0.5m },  (price) =>
             {
-                try
-                {
-                    await websocketClient.SubscribeAsync(item.Name, new[] { 0.01m, 0.5m }, async (price) =>
-                    {
-                        Print(price);
-                    });
-                }
-                catch (Exception)
-                {
-                    // ignored
-                }
-            }
+                Print(price);
+
+                return Task.CompletedTask;
+            });
+
+
+            //await websocketClient.SubscriptionThread;
 
             while (true)
             {
-                Thread.Sleep(50);
+                Thread.Sleep(500);
             }
 
-            await websocketClient.UnsubscribeAsync(instrument.Name);
+            //await websocketClient.UnsubscribeAsync(instrument.Name);
 
             var quote = await client.RequestForQuoteAsync(new RequestForQuoteRequest()
             {
@@ -76,7 +72,7 @@ namespace TestApp
             });
 
             Print(quote);
-            
+
             var order = await client.OrderAsync(new OrderRequest()
             {
                 ClientOrderId = Guid.NewGuid().ToString(),
@@ -89,7 +85,7 @@ namespace TestApp
                 ValidUntil = quote.ValidUntil,
                 //ExecutingUnit = 
                 //ForceOpen = 
-                
+
             });
 
             Print(order);
