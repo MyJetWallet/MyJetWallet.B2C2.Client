@@ -18,7 +18,7 @@ using Newtonsoft.Json.Linq;
 
 namespace MyJetWallet.B2C2.Client
 {
-    public class B2C2WebSocketClient : IB2C2WebSocketClient, IStartable, IDisposable
+    public class B2C2WebSocketClient : IB2C2WebSocketClient
     {
         private readonly TimeSpan _timeOut = new TimeSpan(0, 0, 0, 5);
         private readonly string _baseUri;
