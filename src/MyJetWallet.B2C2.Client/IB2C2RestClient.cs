@@ -41,5 +41,10 @@ namespace MyJetWallet.B2C2.Client
 
         Task<PaginationResponse<List<LedgerLog>>> GetLedgerHistoryAsync(LedgersRequest request, CancellationToken ct = default(CancellationToken));
         Task<PaginationResponse<List<TradeLog>>> GetTradeHistoryAsync(TradesHistoryRequest request, CancellationToken ct = default(CancellationToken));
+
+        Task<AccountInfo> GetAccountInfoAsync(CancellationToken ct = default(CancellationToken));
+
+        Task<MarginRequirements> GetMarginRequirementsAsync(string currency,
+            CancellationToken ct = default(CancellationToken));
     }
 }
