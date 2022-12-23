@@ -35,6 +35,19 @@ namespace TestApp
                 loggerFactory.CreateLogger<B2C2WebSocketClient>(),
                 TimeSpan.FromMilliseconds(600_000));
 
+
+            var mreq = await client.GetMarginRequirementsAsync("USD");
+
+            Print(mreq);
+
+            mreq = await client.GetMarginRequirementsAsync("EUR");
+
+            Print(mreq);
+
+            var acc = await client.GetAccountInfoAsync();
+
+            Print(acc);
+
             var instruments = await client.InstrumentsAsync();
 
             Print(instruments);

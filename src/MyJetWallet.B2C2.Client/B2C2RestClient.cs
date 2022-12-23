@@ -30,7 +30,7 @@ namespace MyJetWallet.B2C2.Client
             var authorizationToken = settings.AuthorizationToken;
             if (string.IsNullOrWhiteSpace(url) || !Uri.TryCreate(url, UriKind.Absolute, out _))
                 throw new ArgumentOutOfRangeException(nameof(url));
-            if (string.IsNullOrWhiteSpace(authorizationToken)) 
+            if (string.IsNullOrWhiteSpace(authorizationToken))
                 throw new ArgumentOutOfRangeException(nameof(authorizationToken));
 
             url = url[^1] == '/' ? url.Substring(0, url.Length - 1) : url;
@@ -87,7 +87,7 @@ namespace MyJetWallet.B2C2.Client
                 responseStr = await response.Content.ReadAsStringAsync(ct).ConfigureAwait(false);
 
                 _log.LogDebug("instruments - response {requestId}; {responseStr}", requestId, responseStr);
-                
+
                 CheckForErrorInResponse(responseStr, status, requestId);
 
                 var result = JsonConvert.DeserializeObject<IReadOnlyCollection<Instrument>>(responseStr);
@@ -263,7 +263,8 @@ namespace MyJetWallet.B2C2.Client
             }
             catch (Exception e)
             {
-                _log.LogError(e, "trade history - response exception", new {
+                _log.LogError(e, "trade history - response exception", new
+                {
                     RequestId = requestId,
                     Response = responseStr
                 });
@@ -388,7 +389,7 @@ namespace MyJetWallet.B2C2.Client
 
                 var data = JsonConvert.DeserializeObject<List<LedgerLog>>(responseStr);
 
-                var result = new PaginationResponse<List<LedgerLog>> {Data = data};
+                var result = new PaginationResponse<List<LedgerLog>> { Data = data };
 
                 if (response.Headers.TryGetValues("link", out var links))
                 {
@@ -458,7 +459,7 @@ namespace MyJetWallet.B2C2.Client
 
                 var data = JsonConvert.DeserializeObject<List<TradeLog>>(responseStr);
 
-                var result = new PaginationResponse<List<TradeLog>> {Data = data};
+                var result = new PaginationResponse<List<TradeLog>> { Data = data };
 
                 if (response.Headers.TryGetValues("link", out var links))
                 {
@@ -469,7 +470,76 @@ namespace MyJetWallet.B2C2.Client
             }
             catch (Exception e)
             {
-                _log.LogError(e, "trade history - response exception", new {
+                _log.LogError(e, "trade history - response exception", new
+                {
+                    RequestId = requestId,
+                    Response = responseStr
+                });
+
+                throw;
+            }
+        }
+
+        public async Task<AccountInfo> GetAccountInfoAsync(CancellationToken ct = default(CancellationToken))
+        {
+            var requestId = Guid.NewGuid();
+
+            _log.LogDebug("account info - request", requestId);
+
+            var responseStr = string.Empty;
+
+            try
+            {
+                using var response = await _httpClient.GetAsync($"account_info/", ct).ConfigureAwait(false);
+                var status = response.StatusCode;
+
+                responseStr = await response.Content.ReadAsStringAsync(ct).ConfigureAwait(false);
+
+                _log.LogDebug("account info - response {requestId}; {responseStr}", requestId, responseStr);
+                CheckForErrorInResponse(responseStr, status, requestId);
+
+                var result = JsonConvert.DeserializeObject<AccountInfo>(responseStr);
+
+                return result;
+            }
+            catch (Exception e)
+            {
+                _log.LogError(e, "account info - response exception", new
+                {
+                    RequestId = requestId,
+                    Response = responseStr
+                });
+
+                throw;
+            }
+        }
+
+        public async Task<MarginRequirements> GetMarginRequirementsAsync(string currency, CancellationToken ct = default(CancellationToken))
+        {
+            var requestId = Guid.NewGuid();
+
+            _log.LogDebug("margin_requirements - request", requestId);
+
+            var responseStr = string.Empty;
+
+            try
+            {
+                using var response = await _httpClient.GetAsync($"margin_requirements/", ct).ConfigureAwait(false);
+                var status = response.StatusCode;
+
+                responseStr = await response.Content.ReadAsStringAsync(ct).ConfigureAwait(false);
+
+                _log.LogDebug("margin_requirements - response {requestId}; {responseStr}", requestId, responseStr);
+                CheckForErrorInResponse(responseStr, status, requestId);
+
+                var result = JsonConvert.DeserializeObject<MarginRequirements>(responseStr);
+
+                return result;
+            }
+            catch (Exception e)
+            {
+                _log.LogError(e, "margin_requirements - response exception", new
+                {
                     RequestId = requestId,
                     Response = responseStr
                 });
@@ -485,11 +555,11 @@ namespace MyJetWallet.B2C2.Client
 
             foreach (var value in values)
             {
-                var links = value.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries);
+                var links = value.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                 foreach (var link in links)
                 {
                     var data = link.Replace("<", string.Empty).Replace(">", string.Empty);
-                    var parts = data.Split(new []{';'}, StringSplitOptions.RemoveEmptyEntries);
+                    var parts = data.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
 
                     if (parts.Length == 2)
                     {
