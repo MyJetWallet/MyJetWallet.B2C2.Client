@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
+using Grpc.Core;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using MyJetWallet.B2C2.Client.Exceptions;
@@ -215,11 +216,12 @@ namespace MyJetWallet.B2C2.Client
             _log.LogDebug("trade - request", tradeRequest);
 
             var responseStr = string.Empty;
+            HttpStatusCode status = HttpStatusCode.OK;
 
             try
             {
                 using var response = await _httpClient.PostAsJsonAsync("trade/", tradeRequest, ct).ConfigureAwait(false);
-                var status = response.StatusCode;
+                status = response.StatusCode;
 
                 responseStr = await response.Content.ReadAsStringAsync(ct).ConfigureAwait(false);
 
@@ -233,7 +235,12 @@ namespace MyJetWallet.B2C2.Client
             }
             catch (Exception e)
             {
-                _log.LogError(e, "trade - response exception", new { RequestId = requestId, Response = responseStr });
+                _log.LogError(e, "trade - response exception: {jsonText}", new
+                {
+                    RequestId = requestId, 
+                    StatusCode = status.ToString(),
+                    Response = responseStr
+                }.ToJson());
 
                 throw;
             }
@@ -246,11 +253,12 @@ namespace MyJetWallet.B2C2.Client
             _log.LogDebug("trade history - request", requestId);
 
             var responseStr = string.Empty;
-
+            HttpStatusCode status = HttpStatusCode.OK;
+                
             try
             {
-                using var response = await _httpClient.GetAsync($"trade/?offset={offset}&limit={limit}", ct).ConfigureAwait(false);
-                var status = response.StatusCode;
+                using var response = await _httpClient.GetAsync($"trade/?offset={offset}&limit={limit}", ct).ConfigureAwait(false); 
+                status = response.StatusCode;
 
                 responseStr = await response.Content.ReadAsStringAsync(ct).ConfigureAwait(false);
 
@@ -263,11 +271,12 @@ namespace MyJetWallet.B2C2.Client
             }
             catch (Exception e)
             {
-                _log.LogError(e, "trade history - response exception", new
+                _log.LogError(e, "trade history - response exception: {jsonText}", new
                 {
                     RequestId = requestId,
+                    StatusCode = status,
                     Response = responseStr
-                });
+                }.ToJson());
 
                 throw;
             }
@@ -280,11 +289,12 @@ namespace MyJetWallet.B2C2.Client
             _log.LogDebug("trade history - request", requestId);
 
             var responseStr = string.Empty;
-
+            HttpStatusCode status = HttpStatusCode.OK;
+            
             try
             {
                 using var response = await _httpClient.GetAsync($"trade/{tradeId}/", ct).ConfigureAwait(false);
-                var status = response.StatusCode;
+                status = response.StatusCode;
 
                 responseStr = await response.Content.ReadAsStringAsync(ct).ConfigureAwait(false);
 
@@ -297,11 +307,12 @@ namespace MyJetWallet.B2C2.Client
             }
             catch (Exception e)
             {
-                _log.LogError(e, "trade history - response exception", new
+                _log.LogError(e, "trade history - response exception: {jsonText}", new
                 {
                     RequestId = requestId,
+                    StatusCode = status.ToString(),
                     Response = responseStr
-                });
+                }.ToJson());
 
                 throw;
             }
@@ -338,6 +349,8 @@ namespace MyJetWallet.B2C2.Client
             var requestId = Guid.NewGuid();
             _log.LogDebug($"ledger history - request requestId: {requestId}, request: {request?.ToJson()}");
 
+            HttpStatusCode status = HttpStatusCode.OK;
+            
             try
             {
                 var param = new Dictionary<string, string>();
@@ -381,7 +394,7 @@ namespace MyJetWallet.B2C2.Client
 
                 using var response = await _httpClient.GetAsync(ledgerUrl, ct).ConfigureAwait(false);
 
-                var status = response.StatusCode;
+                status = response.StatusCode;
 
                 var responseStr = await response.Content.ReadAsStringAsync(ct).ConfigureAwait(false);
 
@@ -400,7 +413,11 @@ namespace MyJetWallet.B2C2.Client
             }
             catch (Exception e)
             {
-                _log.LogError(e, "ledger history - response exception", requestId);
+                _log.LogError(e, "ledger history - response exception: {jsonText}", new
+                {
+                    requestId,
+                    StatusCode = status.ToString()
+                }.ToJson());
                 throw;
             }
         }
@@ -411,6 +428,8 @@ namespace MyJetWallet.B2C2.Client
 
             var responseStr = string.Empty;
 
+            HttpStatusCode status = HttpStatusCode.OK;
+                
             try
             {
                 var param = new Dictionary<string, string>();
@@ -449,7 +468,7 @@ namespace MyJetWallet.B2C2.Client
 
                 using var response = await _httpClient.GetAsync(tradeUrl, ct).ConfigureAwait(false);
 
-                var status = response.StatusCode;
+                status = response.StatusCode;
 
                 responseStr = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
@@ -470,11 +489,12 @@ namespace MyJetWallet.B2C2.Client
             }
             catch (Exception e)
             {
-                _log.LogError(e, "trade history - response exception", new
+                _log.LogError(e, "trade history - response exception: {jsonText}", new
                 {
                     RequestId = requestId,
+                    StatusCode = status.ToString(),
                     Response = responseStr
-                });
+                }.ToJson());
 
                 throw;
             }
@@ -487,11 +507,12 @@ namespace MyJetWallet.B2C2.Client
             _log.LogDebug("account info - request", requestId);
 
             var responseStr = string.Empty;
+            HttpStatusCode status = HttpStatusCode.OK;
 
             try
             {
                 using var response = await _httpClient.GetAsync($"account_info/", ct).ConfigureAwait(false);
-                var status = response.StatusCode;
+                status = response.StatusCode;
 
                 responseStr = await response.Content.ReadAsStringAsync(ct).ConfigureAwait(false);
 
@@ -504,11 +525,12 @@ namespace MyJetWallet.B2C2.Client
             }
             catch (Exception e)
             {
-                _log.LogError(e, "account info - response exception", new
+                _log.LogError(e, "account info - response exception: {jsonText}", new
                 {
                     RequestId = requestId,
+                    StatusCode = status.ToString(),
                     Response = responseStr
-                });
+                }.ToJson());
 
                 throw;
             }
@@ -521,11 +543,12 @@ namespace MyJetWallet.B2C2.Client
             _log.LogDebug("margin_requirements - request", requestId);
 
             var responseStr = string.Empty;
+            HttpStatusCode status = HttpStatusCode.OK;
 
             try
             {
                 using var response = await _httpClient.GetAsync($"margin_requirements/", ct).ConfigureAwait(false);
-                var status = response.StatusCode;
+                status = response.StatusCode;
 
                 responseStr = await response.Content.ReadAsStringAsync(ct).ConfigureAwait(false);
 
@@ -538,11 +561,12 @@ namespace MyJetWallet.B2C2.Client
             }
             catch (Exception e)
             {
-                _log.LogError(e, "margin_requirements - response exception", new
+                _log.LogError(e, "margin_requirements - response exception: {jsonText}", new
                 {
                     RequestId = requestId,
+                    StatusCode = status.ToString(),
                     Response = responseStr
-                });
+                }.ToJson());
 
                 throw;
             }
