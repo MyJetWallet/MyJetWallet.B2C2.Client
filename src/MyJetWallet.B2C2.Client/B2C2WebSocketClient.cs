@@ -475,7 +475,7 @@ namespace MyJetWallet.B2C2.Client
 
         private async Task ConnectIfNeeded()
         {
-            var needToConnect = _clientWebSocket == null;
+            var needToConnect = _clientWebSocket == null || _clientWebSocket.State == WebSocketState.Aborted ;
 
             _log.LogDebug($"WebSocket connection status: {_clientWebSocket?.State}.");
 
@@ -511,7 +511,7 @@ namespace MyJetWallet.B2C2.Client
         {
             if (!_cancellationTokenSource.IsCancellationRequested &&
                 _instrumentLevels.Any() &&
-                DateTime.UtcNow - _lastPriceUpdate >= TimeSpan.FromMinutes(3))
+                DateTime.UtcNow - _lastPriceUpdate >= TimeSpan.FromMinutes(2))
             {
                 _cancellationTokenSource.Cancel();
                 _cancellationTokenSource = new CancellationTokenSource();
@@ -519,13 +519,14 @@ namespace MyJetWallet.B2C2.Client
 
                 List<(string, Func<PriceMessage, Task>)> list = new List<(string, Func<PriceMessage, Task>)>();
                 var levels = _instrumentLevels.ToDictionary(x => x.Key, y => y.Value);
+
                 foreach (var instrument in _instrumentHandlers)
                 {
-                    _instrumentHandlers.TryRemove(instrument.Key, out _);
                     list.Add((instrument.Key, instrument.Value));
+                    //_instrumentHandlers.TryRemove(, out _);
                 }
 
-                _instrumentLevels.Clear();
+                //_instrumentLevels.Clear();
 
                 _clientWebSocket = null;
                 await ConnectIfNeeded();
@@ -533,7 +534,15 @@ namespace MyJetWallet.B2C2.Client
                 foreach (var item in list)
                 {
                     var level = levels[item.Item1];
-                    await SubscribeAsync(item.Item1, level, item.Item2, _cancellationTokenSource.Token);
+                    try
+                    {
+                        _instrumentHandlers.TryRemove(item.Item1, out _);
+                        await SubscribeAsync(item.Item1, level, item.Item2, _cancellationTokenSource.Token);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Can't resubscribe after");
+                    }
                 }
             }
         }
