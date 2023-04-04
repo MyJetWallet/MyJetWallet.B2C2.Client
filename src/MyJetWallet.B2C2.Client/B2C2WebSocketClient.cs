@@ -541,7 +541,8 @@ namespace MyJetWallet.B2C2.Client
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine("Can't resubscribe after");
+                        _instrumentHandlers[item.Item1] = item.Item2;
+                        Console.WriteLine("Can't resubscribe after disconnect");
                     }
                 }
             }
