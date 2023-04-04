@@ -13,8 +13,8 @@ The *MyJetWallet.B2C2.Client.csproj* project file contains:
 
 - 8 namespaces.
 - 47 named types.
-- 2,246 total lines of source code.
-- Approximately 941 lines of executable code.
+- 2,269 total lines of source code.
+- Approximately 948 lines of executable code.
 - The highest cyclomatic complexity is 12 :x:.
 
 <details>
@@ -69,8 +69,8 @@ The `MyJetWallet.B2C2.Client.Autofac` namespace contains 1 named types.
 The `MyJetWallet.B2C2.Client` namespace contains 5 named types.
 
 - 5 named types.
-- 1,211 total lines of source code.
-- Approximately 487 lines of executable code.
+- 1,234 total lines of source code.
+- Approximately 494 lines of executable code.
 - The highest cyclomatic complexity is 12 :x:.
 
 <details>
@@ -82,31 +82,31 @@ The `MyJetWallet.B2C2.Client` namespace contains 5 named types.
 <br>
 
 - The `B2C2RestClient` contains 19 members.
-- 592 total lines of source code.
-- Approximately 241 lines of executable code.
+- 615 total lines of source code.
+- Approximately 248 lines of executable code.
 - The highest cyclomatic complexity is 12 :x:.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| Field | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L20' title='HttpClient B2C2RestClient._httpClient'>20</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Field | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L21' title='ILogger<B2C2RestClient> B2C2RestClient._log'>21</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L23' title='B2C2RestClient.B2C2RestClient(B2C2ClientSettings settings, IHttpClientFactory clientFactory, ILogger<B2C2RestClient> logger)'>23</a> | 60 | 6 :heavy_check_mark: | 0 | 12 | 19 / 10 |
-| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L43' title='Task<IReadOnlyDictionary<string, decimal>> B2C2RestClient.BalanceAsync(CancellationToken ct = null)'>43</a> | 59 | 1 :heavy_check_mark: | 0 | 8 | 30 / 13 |
-| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L582' title='void B2C2RestClient.CheckForErrorInResponse(string response, HttpStatusCode status, Guid guid)'>582</a> | 67 | 2 :heavy_check_mark: | 0 | 7 | 22 / 7 |
-| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L605' title='void B2C2RestClient.Dispose()'>605</a> | 100 | 2 :heavy_check_mark: | 0 | 2 | 4 / 1 |
-| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L483' title='Task<AccountInfo> B2C2RestClient.GetAccountInfoAsync(CancellationToken ct = null)'>483</a> | 59 | 1 :heavy_check_mark: | 0 | 7 | 33 / 13 |
-| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L551' title='(string, string) B2C2RestClient.GetCursors(IEnumerable<string> values)'>551</a> | 59 | 5 :heavy_check_mark: | 0 | 5 | 30 / 13 |
-| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L310' title='Task<List<LedgerLog>> B2C2RestClient.GetLedgerHistoryAsync(int offset = 0, int limit = 50, CancellationToken ct = null)'>310</a> | 57 | 1 :heavy_check_mark: | 0 | 8 | 25 / 14 |
-| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L336' title='Task<PaginationResponse<List<LedgerLog>>> B2C2RestClient.GetLedgerHistoryAsync(LedgersRequest request, CancellationToken ct = null)'>336</a> | 46 | 12 :x: | 0 | 17 | 71 / 30 |
-| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L517' title='Task<MarginRequirements> B2C2RestClient.GetMarginRequirementsAsync(string currency, CancellationToken ct = null)'>517</a> | 59 | 1 :heavy_check_mark: | 0 | 7 | 33 / 13 |
-| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L178' title='Task<OrderResponse> B2C2RestClient.GetOrderAsync(string orderId, CancellationToken ct = null)'>178</a> | 59 | 1 :heavy_check_mark: | 0 | 7 | 30 / 13 |
-| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L276' title='Task<TradeLog> B2C2RestClient.GetTradeAsync(string tradeId, CancellationToken ct = null)'>276</a> | 59 | 1 :heavy_check_mark: | 0 | 7 | 33 / 13 |
-| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L242' title='Task<List<TradeLog>> B2C2RestClient.GetTradeHistoryAsync(int offset = 0, int limit = 50, CancellationToken ct = null)'>242</a> | 56 | 1 :heavy_check_mark: | 0 | 8 | 33 / 15 |
-| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L408' title='Task<PaginationResponse<List<TradeLog>>> B2C2RestClient.GetTradeHistoryAsync(TradesHistoryRequest request, CancellationToken ct = null)'>408</a> | 46 | 10 :radioactive: | 0 | 16 | 74 / 29 |
-| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L74' title='Task<IReadOnlyCollection<Instrument>> B2C2RestClient.InstrumentsAsync(CancellationToken ct = null)'>74</a> | 59 | 1 :heavy_check_mark: | 0 | 8 | 30 / 13 |
-| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L141' title='Task<OrderResponse> B2C2RestClient.OrderAsync(OrderRequest orderRequest, CancellationToken ct = null)'>141</a> | 56 | 3 :heavy_check_mark: | 0 | 11 | 36 / 15 |
-| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L105' title='Task<RequestForQuoteResponse> B2C2RestClient.RequestForQuoteAsync(RequestForQuoteRequest requestForQuoteRequest, CancellationToken ct = null)'>105</a> | 56 | 3 :heavy_check_mark: | 0 | 11 | 35 / 15 |
-| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L209' title='Task<Trade> B2C2RestClient.TradeAsync(TradeRequest tradeRequest, CancellationToken ct = null)'>209</a> | 57 | 2 :heavy_check_mark: | 0 | 10 | 32 / 14 |
+| Field | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L21' title='HttpClient B2C2RestClient._httpClient'>21</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L22' title='ILogger<B2C2RestClient> B2C2RestClient._log'>22</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L24' title='B2C2RestClient.B2C2RestClient(B2C2ClientSettings settings, IHttpClientFactory clientFactory, ILogger<B2C2RestClient> logger)'>24</a> | 60 | 6 :heavy_check_mark: | 0 | 12 | 19 / 10 |
+| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L44' title='Task<IReadOnlyDictionary<string, decimal>> B2C2RestClient.BalanceAsync(CancellationToken ct = null)'>44</a> | 59 | 1 :heavy_check_mark: | 0 | 8 | 30 / 13 |
+| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L606' title='void B2C2RestClient.CheckForErrorInResponse(string response, HttpStatusCode status, Guid guid)'>606</a> | 67 | 2 :heavy_check_mark: | 0 | 7 | 22 / 7 |
+| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L629' title='void B2C2RestClient.Dispose()'>629</a> | 100 | 2 :heavy_check_mark: | 0 | 2 | 4 / 1 |
+| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L503' title='Task<AccountInfo> B2C2RestClient.GetAccountInfoAsync(CancellationToken ct = null)'>503</a> | 58 | 1 :heavy_check_mark: | 0 | 8 | 35 / 14 |
+| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L575' title='(string, string) B2C2RestClient.GetCursors(IEnumerable<string> values)'>575</a> | 59 | 5 :heavy_check_mark: | 0 | 5 | 30 / 13 |
+| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L321' title='Task<List<LedgerLog>> B2C2RestClient.GetLedgerHistoryAsync(int offset = 0, int limit = 50, CancellationToken ct = null)'>321</a> | 57 | 1 :heavy_check_mark: | 0 | 8 | 25 / 14 |
+| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L347' title='Task<PaginationResponse<List<LedgerLog>>> B2C2RestClient.GetLedgerHistoryAsync(LedgersRequest request, CancellationToken ct = null)'>347</a> | 46 | 12 :x: | 0 | 18 | 77 / 31 |
+| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L539' title='Task<MarginRequirements> B2C2RestClient.GetMarginRequirementsAsync(string currency, CancellationToken ct = null)'>539</a> | 58 | 1 :heavy_check_mark: | 0 | 8 | 35 / 14 |
+| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L179' title='Task<OrderResponse> B2C2RestClient.GetOrderAsync(string orderId, CancellationToken ct = null)'>179</a> | 59 | 1 :heavy_check_mark: | 0 | 7 | 30 / 13 |
+| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L285' title='Task<TradeLog> B2C2RestClient.GetTradeAsync(string tradeId, CancellationToken ct = null)'>285</a> | 58 | 1 :heavy_check_mark: | 0 | 8 | 35 / 14 |
+| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L249' title='Task<List<TradeLog>> B2C2RestClient.GetTradeHistoryAsync(int offset = 0, int limit = 50, CancellationToken ct = null)'>249</a> | 55 | 1 :heavy_check_mark: | 0 | 9 | 35 / 16 |
+| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L425' title='Task<PaginationResponse<List<TradeLog>>> B2C2RestClient.GetTradeHistoryAsync(TradesHistoryRequest request, CancellationToken ct = null)'>425</a> | 46 | 10 :radioactive: | 0 | 17 | 77 / 30 |
+| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L75' title='Task<IReadOnlyCollection<Instrument>> B2C2RestClient.InstrumentsAsync(CancellationToken ct = null)'>75</a> | 59 | 1 :heavy_check_mark: | 0 | 8 | 30 / 13 |
+| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L142' title='Task<OrderResponse> B2C2RestClient.OrderAsync(OrderRequest orderRequest, CancellationToken ct = null)'>142</a> | 56 | 3 :heavy_check_mark: | 0 | 11 | 36 / 15 |
+| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L106' title='Task<RequestForQuoteResponse> B2C2RestClient.RequestForQuoteAsync(RequestForQuoteRequest requestForQuoteRequest, CancellationToken ct = null)'>106</a> | 56 | 3 :heavy_check_mark: | 0 | 11 | 35 / 15 |
+| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2RestClient.cs#L210' title='Task<Trade> B2C2RestClient.TradeAsync(TradeRequest tradeRequest, CancellationToken ct = null)'>210</a> | 56 | 2 :heavy_check_mark: | 0 | 11 | 38 / 15 |
 
 <a href="#B2C2RestClient-class-diagram">:link: to `B2C2RestClient` class diagram</a>
 
