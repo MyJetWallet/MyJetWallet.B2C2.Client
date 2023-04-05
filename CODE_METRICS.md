@@ -13,8 +13,8 @@ The *MyJetWallet.B2C2.Client.csproj* project file contains:
 
 - 8 namespaces.
 - 47 named types.
-- 2,269 total lines of source code.
-- Approximately 948 lines of executable code.
+- 2,279 total lines of source code.
+- Approximately 950 lines of executable code.
 - The highest cyclomatic complexity is 12 :x:.
 
 <details>
@@ -69,8 +69,8 @@ The `MyJetWallet.B2C2.Client.Autofac` namespace contains 1 named types.
 The `MyJetWallet.B2C2.Client` namespace contains 5 named types.
 
 - 5 named types.
-- 1,234 total lines of source code.
-- Approximately 494 lines of executable code.
+- 1,244 total lines of source code.
+- Approximately 496 lines of executable code.
 - The highest cyclomatic complexity is 12 :x:.
 
 <details>
@@ -123,8 +123,8 @@ The `MyJetWallet.B2C2.Client` namespace contains 5 named types.
 <br>
 
 - The `B2C2WebSocketClient` contains 37 members.
-- 559 total lines of source code.
-- Approximately 201 lines of executable code.
+- 569 total lines of source code.
+- Approximately 203 lines of executable code.
 - The highest cyclomatic complexity is 8 :warning:.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
@@ -145,10 +145,10 @@ The `MyJetWallet.B2C2.Client` namespace contains 5 named types.
 | Field | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2WebSocketClient.cs#L33' title='HashSet<string> B2C2WebSocketClient._tradableInstruments'>33</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2WebSocketClient.cs#L40' title='B2C2WebSocketClient.B2C2WebSocketClient(B2C2ClientSettings settings, ILogger<B2C2WebSocketClient> logger, TimeSpan? timeOut = null)'>40</a> | 53 | 8 :warning: | 0 | 18 | 25 / 18 |
 | Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2WebSocketClient.cs#L143' title='Task B2C2WebSocketClient.Connect()'>143</a> | 66 | 2 :heavy_check_mark: | 0 | 6 | 18 / 8 |
-| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2WebSocketClient.cs#L476' title='Task B2C2WebSocketClient.ConnectIfNeeded()'>476</a> | 78 | 3 :heavy_check_mark: | 0 | 4 | 9 / 3 |
+| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2WebSocketClient.cs#L476' title='Task B2C2WebSocketClient.ConnectIfNeeded()'>476</a> | 77 | 4 :heavy_check_mark: | 0 | 4 | 9 / 3 |
 | Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2WebSocketClient.cs#L488' title='void B2C2WebSocketClient.Dispose()'>488</a> | 93 | 1 :heavy_check_mark: | 0 | 1 | 7 / 2 |
-| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2WebSocketClient.cs#L541' title='void B2C2WebSocketClient.Dispose(bool disposing)'>541</a> | 71 | 6 :heavy_check_mark: | 0 | 3 | 10 / 6 |
-| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2WebSocketClient.cs#L510' title='Task B2C2WebSocketClient.DoTime()'>510</a> | 56 | 6 :heavy_check_mark: | 0 | 11 | 30 / 17 |
+| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2WebSocketClient.cs#L551' title='void B2C2WebSocketClient.Dispose(bool disposing)'>551</a> | 71 | 6 :heavy_check_mark: | 0 | 3 | 10 / 6 |
+| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2WebSocketClient.cs#L510' title='Task B2C2WebSocketClient.DoTime()'>510</a> | 54 | 6 :heavy_check_mark: | 0 | 11 | 40 / 19 |
 | Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2WebSocketClient.cs#L494' title='B2C2WebSocketClient.~B2C2WebSocketClient()'>494</a> | 100 | 1 :heavy_check_mark: | 0 | 0 | 4 / 1 |
 | Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2WebSocketClient.cs#L178' title='Task B2C2WebSocketClient.HandleMessagesCycleAsync()'>178</a> | 55 | 7 :heavy_check_mark: | 0 | 10 | 44 / 17 |
 | Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2WebSocketClient.cs#L324' title='Task B2C2WebSocketClient.HandlePriceMessage(JToken jToken)'>324</a> | 59 | 6 :heavy_check_mark: | 0 | 9 | 41 / 12 |
@@ -247,12 +247,12 @@ The `MyJetWallet.B2C2.Client` namespace contains 5 named types.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2WebSocketClient.cs#L564' title='Subscription.Subscription(string tag, TaskCompletionSource<int> taskCompletionSource, Func<PriceMessage, Task> function, decimal[] levels)'>564</a> | 75 | 1 :heavy_check_mark: | 0 | 5 | 7 / 4 |
-| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2WebSocketClient.cs#L572' title='Subscription.Subscription(string tag, TaskCompletionSource<int> taskCompletionSource, decimal[] levels)'>572</a> | 79 | 1 :heavy_check_mark: | 0 | 2 | 6 / 3 |
-| Property | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2WebSocketClient.cs#L560' title='Func<PriceMessage, Task> Subscription.Function'>560</a> | 100 | 1 :heavy_check_mark: | 0 | 3 | 1 / 0 |
-| Property | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2WebSocketClient.cs#L562' title='decimal[] Subscription.Levels'>562</a> | 100 | 2 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Property | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2WebSocketClient.cs#L556' title='string Subscription.Tag'>556</a> | 100 | 1 :heavy_check_mark: | 0 | 0 | 1 / 0 |
-| Property | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2WebSocketClient.cs#L558' title='TaskCompletionSource<int> Subscription.TaskCompletionSource'>558</a> | 100 | 1 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2WebSocketClient.cs#L574' title='Subscription.Subscription(string tag, TaskCompletionSource<int> taskCompletionSource, Func<PriceMessage, Task> function, decimal[] levels)'>574</a> | 75 | 1 :heavy_check_mark: | 0 | 5 | 7 / 4 |
+| Method | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2WebSocketClient.cs#L582' title='Subscription.Subscription(string tag, TaskCompletionSource<int> taskCompletionSource, decimal[] levels)'>582</a> | 79 | 1 :heavy_check_mark: | 0 | 2 | 6 / 3 |
+| Property | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2WebSocketClient.cs#L570' title='Func<PriceMessage, Task> Subscription.Function'>570</a> | 100 | 1 :heavy_check_mark: | 0 | 3 | 1 / 0 |
+| Property | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2WebSocketClient.cs#L572' title='decimal[] Subscription.Levels'>572</a> | 100 | 2 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Property | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2WebSocketClient.cs#L566' title='string Subscription.Tag'>566</a> | 100 | 1 :heavy_check_mark: | 0 | 0 | 1 / 0 |
+| Property | <a href='https://github.com/MyJetWallet/MyJetWallet.B2C2.Client/blob/master/src/MyJetWallet.B2C2.Client/B2C2WebSocketClient.cs#L568' title='TaskCompletionSource<int> Subscription.TaskCompletionSource'>568</a> | 100 | 1 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 
 <a href="#B2C2WebSocketClient.Subscription-class-diagram">:link: to `B2C2WebSocketClient.Subscription` class diagram</a>
 
