@@ -19,10 +19,10 @@
         <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
         <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
         <PackageReference Include="Microsoft.Extensions.Options" Version="7.0.1" />
-        <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.30.0" />
+        <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.30.1" />
         <PackageReference Include="MyJetWallet.Sdk.Service" Version="2.5.0" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.30.0" />
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.30.1" />
     </ItemGroup>
 
 </Project>
