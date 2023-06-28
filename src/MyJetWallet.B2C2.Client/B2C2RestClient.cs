@@ -561,7 +561,7 @@ namespace MyJetWallet.B2C2.Client
             }
             catch (Exception e)
             {
-                _log.LogError(e, "margin_requirements - response exception: {jsonText}", new
+                _log.LogWarning(e, "margin_requirements - response exception: {jsonText}", new
                 {
                     RequestId = requestId,
                     StatusCode = status.ToString(),
