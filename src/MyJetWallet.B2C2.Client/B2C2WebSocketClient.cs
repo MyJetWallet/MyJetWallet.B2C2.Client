@@ -199,7 +199,6 @@ namespace MyJetWallet.B2C2.Client
 
                         var messageBytes = stream.ToArray();
                         var jsonMessage = Encoding.UTF8.GetString(messageBytes, 0, messageBytes.Length);
-                        _log.LogInformation("Websocket message: {json}", jsonMessage);
 
                         if (!string.IsNullOrWhiteSpace(jsonMessage))
                             await HandleWebSocketMessageAsync(jsonMessage);
