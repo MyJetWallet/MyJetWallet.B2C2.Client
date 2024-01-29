@@ -145,7 +145,7 @@ namespace MyJetWallet.B2C2.Client
 
             var requestId = Guid.NewGuid();
 
-            _log.LogDebug("order - request", orderRequest);
+            _log.LogDebug("order - request: {jsonText}", orderRequest.ToJson());
 
             var responseStr = string.Empty;
 
