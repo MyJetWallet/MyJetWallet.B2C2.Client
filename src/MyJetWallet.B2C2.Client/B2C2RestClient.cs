@@ -151,7 +151,7 @@ namespace MyJetWallet.B2C2.Client
 
             try
             {
-                using var response = await _httpClient.PostAsJsonAsync("order/", orderRequest, ct).ConfigureAwait(false);
+                using var response = await _httpClient.PostAsJsonAsync("v2/order/", orderRequest, ct).ConfigureAwait(false);
                 var status = response.StatusCode;
 
                 responseStr = await response.Content.ReadAsStringAsync(ct).ConfigureAwait(false);
