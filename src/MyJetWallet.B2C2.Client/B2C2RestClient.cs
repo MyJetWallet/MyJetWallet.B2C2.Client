@@ -13,6 +13,7 @@ using MyJetWallet.B2C2.Client.Models.Rest;
 using MyJetWallet.B2C2.Client.Settings;
 using MyJetWallet.Sdk.Service;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace MyJetWallet.B2C2.Client
 {
@@ -286,7 +287,7 @@ namespace MyJetWallet.B2C2.Client
         {
             var requestId = Guid.NewGuid();
 
-            _log.LogDebug("trade history - request", requestId);
+            _log.LogDebug("trade history - request: {jsonText}", new  { requestId, tradeId}.ToJson());
 
             var responseStr = string.Empty;
             HttpStatusCode status = HttpStatusCode.OK;
@@ -570,6 +571,26 @@ namespace MyJetWallet.B2C2.Client
 
                 throw;
             }
+        }
+
+        public async Task<List<UnsecureLoan>> GetUnsecureActiveLoans()
+        {
+            using var response = await _httpClient.GetAsync("funding/unsecured_loan/").ConfigureAwait(false);
+            var status = response.StatusCode;
+            var responseStr = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+            if (status != HttpStatusCode.OK)
+            {
+                _log.LogError("Cannot execute GetUnsecureActiveLoans. {json}", new
+                {
+                    status, responseStr
+                }.ToJson());
+                throw new Exception($"Cannot execute GetUnsecureActiveLoans: {status.ToString()}");
+            }
+            
+            var result = JsonConvert.DeserializeObject<List<UnsecureLoan>>(responseStr);
+
+            return result;
         }
 
         private (string, string) GetCursors(IEnumerable<string> values)
