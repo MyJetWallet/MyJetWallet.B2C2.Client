@@ -46,5 +46,7 @@ namespace MyJetWallet.B2C2.Client
 
         Task<MarginRequirements> GetMarginRequirementsAsync(string currency,
             CancellationToken ct = default(CancellationToken));
+
+        Task<List<UnsecureLoan>> GetUnsecureActiveLoans();
     }
 }
