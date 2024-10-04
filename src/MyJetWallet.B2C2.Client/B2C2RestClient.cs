@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
@@ -575,20 +576,30 @@ namespace MyJetWallet.B2C2.Client
 
         public async Task<List<UnsecureLoan>> GetUnsecureActiveLoans()
         {
-            using var response = await _httpClient.GetAsync("funding/unsecured_loan/?limit=40").ConfigureAwait(false);
-            var status = response.StatusCode;
-            var responseStr = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            var result = new List<UnsecureLoan>();
+            var resp = new List<UnsecureLoan>();
 
-            if (status != HttpStatusCode.OK)
+            var offset = 0;
+            do
             {
-                _log.LogError("Cannot execute GetUnsecureActiveLoans. {json}", new
+                using var response = await _httpClient.GetAsync($"funding/unsecured_loan/?limit=100&offset={offset}")
+                    .ConfigureAwait(false);
+                var status = response.StatusCode;
+                var responseStr = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+                if (status != HttpStatusCode.OK)
                 {
-                    status, responseStr
-                }.ToJson());
-                throw new Exception($"Cannot execute GetUnsecureActiveLoans: {status.ToString()}");
-            }
-            
-            var result = JsonConvert.DeserializeObject<List<UnsecureLoan>>(responseStr);
+                    _log.LogError("Cannot execute GetUnsecureActiveLoans. {json}", new
+                    {
+                        status, responseStr
+                    }.ToJson());
+                    throw new Exception($"Cannot execute GetUnsecureActiveLoans: {status.ToString()}");
+                }
+
+                resp = JsonConvert.DeserializeObject<List<UnsecureLoan>>(responseStr);
+                result.AddRange(resp);
+                offset += 100;
+            } while (resp.Any());
 
             return result;
         }
