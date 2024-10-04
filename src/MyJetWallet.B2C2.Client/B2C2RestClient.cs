@@ -575,7 +575,7 @@ namespace MyJetWallet.B2C2.Client
 
         public async Task<List<UnsecureLoan>> GetUnsecureActiveLoans()
         {
-            using var response = await _httpClient.GetAsync("funding/unsecured_loan/").ConfigureAwait(false);
+            using var response = await _httpClient.GetAsync("funding/unsecured_loan/?limit=40").ConfigureAwait(false);
             var status = response.StatusCode;
             var responseStr = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
