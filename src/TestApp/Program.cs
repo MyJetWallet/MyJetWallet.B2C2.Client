@@ -19,6 +19,7 @@ namespace TestApp
             //var body = "";
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddHttpClient();
+            
 
             var serviceProvider = serviceCollection.BuildServiceProvider();
             using var loggerFactory = LogConfigurator.ConfigureElk_v2("MyJetWallet", null, null);

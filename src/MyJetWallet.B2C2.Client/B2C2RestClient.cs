@@ -361,12 +361,12 @@ namespace MyJetWallet.B2C2.Client
                 {
                     if (request.CreatedAfter.HasValue)
                     {
-                        param.Add("created__gte", request.CreatedAfter.Value.ToString("yyyy-MM-ddThh:mm:ss"));
+                        param.Add("created__gte", request.CreatedAfter.Value.ToString("O"));
                     }
 
                     if (request.CreatedBefore.HasValue)
                     {
-                        param.Add("created__lt", request.CreatedBefore.Value.ToString("yyyy-MM-ddThh:mm:ss"));
+                        param.Add("created__lt", request.CreatedBefore.Value.ToString("O"));
                     }
 
                     if (!string.IsNullOrEmpty(request.Currency))
@@ -381,7 +381,7 @@ namespace MyJetWallet.B2C2.Client
 
                     if (request.Since.HasValue)
                     {
-                        param.Add("since", request.Since.Value.ToString("yyyy-MM-ddThh:mm:ss"));
+                        param.Add("since", request.Since.Value.ToString("O"));
                     }
 
                     if (!string.IsNullOrEmpty(request.Cursor))
@@ -440,12 +440,12 @@ namespace MyJetWallet.B2C2.Client
                 {
                     if (request.CreatedAfter.HasValue)
                     {
-                        param.Add("created__gte", request.CreatedAfter.Value.ToString("yyyy-MM-ddThh:mm:ss"));
+                        param.Add("created__gte", request.CreatedAfter.Value.ToString("O"));
                     }
 
                     if (request.CreatedBefore.HasValue)
                     {
-                        param.Add("created__lt", request.CreatedBefore.Value.ToString("yyyy-MM-ddThh:mm:ss"));
+                        param.Add("created__lt", request.CreatedBefore.Value.ToString("O"));
                     }
 
                     if (!string.IsNullOrEmpty(request.Instrument))
@@ -455,7 +455,7 @@ namespace MyJetWallet.B2C2.Client
 
                     if (request.Since.HasValue)
                     {
-                        param.Add("since", request.Since.Value.ToString("yyyy-MM-ddThh:mm:ss"));
+                        param.Add("since", request.Since.Value.ToString("O"));
                     }
 
                     if (!string.IsNullOrEmpty(request.Cursor))
